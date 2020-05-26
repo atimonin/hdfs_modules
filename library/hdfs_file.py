@@ -393,7 +393,7 @@ def main():
             except Exception:
                 error("mode must be in octal form")
     
-        p.mode = oct(p.mode).lstrip("0")
+        p.mode = '%03o' % p.mode
         if p.mode == '':        # Thanks Jocelyn
             p.mode = '0'
         #print '{ mode_type: "' + str(type(p.mode)) + '",  mode_value: "' + str(p.mode) + '"}'

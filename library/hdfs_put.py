@@ -379,14 +379,14 @@ def checkParameters(p):
                 p.mode = int(p.mode, 8)
             except Exception:
                 error("mode must be in octal form")
-        p.mode = oct(p.mode)
+        p.mode = '%03o' % p.mode
     if p.directoryMode != None:
         if not isinstance(p.directoryMode, int):
             try:
                 p.directoryMode = int(p.directoryMode, 8)
             except Exception:
                 error("directoryMode must be in octal form")
-        p.directoryMode = oct(p.directoryMode)
+        p.directoryMode = '%03o' % p.directoryMode
         #print '{ mode_type: "' + str(type(p.directoryMode)) + '",  directoryMode_value: "' + str(p.directoryMode) + '"}'
 
     if not p.hdfsDest.startswith("/"):
@@ -481,14 +481,14 @@ def buildLocalTree(rroot):
             f = {}
             f['size'] = stat.st_size
             f['modificationTime'] = int(stat.st_mtime)
-            f['mode'] = "0" + oct(stat.st_mode)[-3:]
+            f['mode'] = "0" + ('%03o' % stat.st_mode)[-3:]
             fileMap[key] = f
         for dirName in dirs:
             key = os.path.join(root, dirName)[prefLen:]
             path = os.path.join(rroot, key)
             stat = os.stat(path)
             f = {}
-            f['mode'] = "0" + oct(stat.st_mode)[-3:]
+            f['mode'] = "0" + ('%03o' % stat.st_mode)[-3:]
             dirMap[key] = f
     tree['files'] = fileMap
     tree['directories'] = dirMap
