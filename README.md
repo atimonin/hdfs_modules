@@ -1,5 +1,7 @@
 # hdfs_modules
 
+cloned from https://github.com/BROADSoftware/hdfs_modules
+
 This ansible role host a set of modules aimed to manipulate file and directory on HDFS (The Hadoop Distributed File System).
 
 * hdfs\_file: Equivalent of the ansible files/file module, but on HDFS. Doc [at this location](docs/hdfs_file.txt)
