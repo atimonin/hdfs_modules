@@ -140,7 +140,9 @@ HAS_REQUESTS = False
 try:
     import requests
     HAS_REQUESTS = True
-except ImportError, AttributeError:
+except ImportError:
+    pass
+except AttributeError:
     # AttributeError if __version__ is not present
     pass
 
